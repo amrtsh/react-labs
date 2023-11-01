@@ -1,0 +1,58 @@
+# Dependency directories
+node_modules/
+
+# Environment variables file
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build files
+build/
+dist/
+
+# Editor directories and files
+.idea
+.vscode/
+*.code-workspace
+
+# macOS system files
+.DS_Store
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency lock files
+yarn.lock
+package-lock.json
+
+# IDE files
+.idea/
+
+# Coverage directory
+coverage/
+
+# Compiled output
+*.log
+*.tsbuildinfo
+*.bak
+
+# Automatically generated coverage reports
+coverage/
+
+# End of line character
+*.bak
+
+# IDE and editor configuration files
+*.iml
+*.ipr
+*.iws
+*.prefs
+*.class
+*.jar
+
+# User-specific files
+npm-debug.log*
+yarn-error.log*

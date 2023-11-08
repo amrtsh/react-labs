@@ -7,11 +7,12 @@ export const HeroContainer = styled.div`
 `;
 
 export const InnerIntro = styled.div`
-  background-color: rgb(134, 188, 238);
-  padding: 5px;
-  border-radius: 4px;
+  background-color: #e7f1f8;
+  padding: 15px 15px 10px 15px;
+  border-radius: 6px;
   font-family: Helvetica;
   font-size: 13px;
+  box-shadow: 10px 5px 5px #aaaaaa;
   display: flex;
   align-items: center;
 `;

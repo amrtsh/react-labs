@@ -19,7 +19,7 @@
 }
 
 .FilterContainer {
-    display: flex;
+    /*display: flex;*/
     background-color: aliceblue;
     justify-content: space-between;
     padding-bottom: 10px;
@@ -146,5 +146,10 @@
 
 .header__search__input {
     margin-right: 10px;
+}
+
+.inputmenu {
+    display: flex;
+    justify-content: space-between;
 }
 

@@ -1,14 +1,13 @@
 import React from "react";
 import Hero from "./Hero/Hero";
 import Intro from "./Intro/Intro";
-import SMButton from "../SMButton/SMButton";
+import "./Intro/SMButton.css";
 
-const Home = () => {
+const Home = (props) => {
     return (
         <div>
             <Hero/>
-            <Intro/>
-            <SMButton/>
+            <Intro ship={props.ship}/>
         </div>
     );
 };

@@ -1,0 +1,17 @@
+.item_intro {
+    background-color: #e7f1f8;
+    display: flex;
+    /*margin-top: 50px;*/
+    /*margin-left: 50px;*/
+    /*margin-bottom: 310px;*/
+    margin:  50px auto;
+    width: 800px;
+    padding: 20px;
+    border-radius: 3px;
+    box-shadow: 10px 5px 5px #aaaaaa;
+    justify-content: space-between;
+}
+
+.text {
+    width: 300px;
+}

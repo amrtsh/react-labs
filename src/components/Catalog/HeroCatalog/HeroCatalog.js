@@ -1,14 +1,14 @@
 import React from "react";
-import ShipsTemplate from "../../Items/ShipTemplate";
+import ShipTemplate from "../../Items/ShipTemplate";
 
-function ItemContainer(props) {
-    let ship = props.ship;
+function ItemContainer({ship}) {
 
     return(
       <ul className="item">
           {
               ship.map(((ship,id) => (
-                  <li key={id}><ShipsTemplate
+                  <li key={id}><ShipTemplate
+                  id={ship.id}
                   name={ship.name}
                   tonnage={ship.tonnage}
                   number_of_passengers={ship.number_of_passengers}
@@ -19,10 +19,10 @@ function ItemContainer(props) {
       </ul>
     );
 }
-const Hero = (props) => (
+const HeroCatalog = (props) => (
     <div className="items">
         <ItemContainer ship={props.ship}/>
     </div>
 );
 
-export default Hero;
+export default HeroCatalog;

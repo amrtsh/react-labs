@@ -1,43 +1,40 @@
-import React from 'react';
-import {HeroContainer, InnerIntro, InnerIntroImage} from './Intro.styles'; // Import your styled components
-import shipLogo from '../../../img/ship_logo.png';
+import React, {useState} from 'react';
+import ShipTemplate from "../../Items/ShipTemplate";
+import "./SMButton.css";
+import "./animation.css";
+const Intro = (props) => {
+    const [count, setCount] = useState(3);
 
-const Intro = () => (
-    <HeroContainer>
-        <InnerIntro>
-
-            <div>
-                <InnerIntroImage src={shipLogo} alt="ship"/>
-                <h3 className="item__title"></h3>
-                <h5 className="item__info name">Name: Ship 1</h5>
-                <h5 className="item__info tonnage">Tonnage: 10450.50</h5>
-                <h5 className="item__info number_of_passengers">Passengers: 125</h5>
-                <h5 className="item__info tonnage_price">Tonnage Price: 12023400$</h5>
+    return(
+        <div className="items">
+            <ItemContainer ship={props.ship} count = {count}/>
+            <div className="aaa">
+                <button onClick={() => setCount(count + 4)} className="btn_more">Show more</button>
             </div>
-        </InnerIntro>
-        <InnerIntro>
-            <div>
-                <InnerIntroImage src={shipLogo} alt="ship"/>
+        </div>
+    );
+};
 
-                <h3 className="item__title"></h3>
-                <h5 className="item__info name">Name: Ship 2</h5>
-                <h5 className="item__info tonnage">Tonnage: 10700.50</h5>
-                <h5 className="item__info number_of_passengers">Passengers: 625</h5>
-                <h5 className="item__info tonnage_price">Tonnage Price: 12006700$</h5>
-            </div>
-        </InnerIntro>
-        <InnerIntro>
-            <div>
-                <InnerIntroImage src={shipLogo} alt="ship"/>
 
-                <h3 className="item__title"></h3>
-                <h5 className="item__info name">Name: Ship 3</h5>
-                <h5 className="item__info tonnage">Tonnage: 12340.50</h5>
-                <h5 className="item__info number_of_passengers">Passengers: 155</h5>
-                <h5 className="item__info tonnage_price">Tonnage Price: 1345000$</h5>
-            </div>
-        </InnerIntro>
-    </HeroContainer>
-);
+function ItemContainer({ship, count}) {
+
+    return(
+        <ul className="ssss">
+            {
+                ship.slice(0, count).map(((ship,id) => (
+                    <li key={id}><ShipTemplate
+                        id={id}
+                        name={ship.name}
+                        tonnage={ship.tonnage}
+                        number_of_passengers={ship.number_of_passengers}
+                        tonnage_price={ship.tonnage_price}
+                    />
+                    </li>
+                )))
+            }
+        </ul>
+    );
+}
+
 
 export default Intro;

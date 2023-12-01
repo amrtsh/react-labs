@@ -3,11 +3,15 @@ import styled from 'styled-components';
 
 export const LinkingWrapper = styled.div`
   .selected {
+    display:flex;
+    flex-direction: column-reverse;
+    align-items:center;
     :after {
       justify-content: center;
       content: '';
       display: block;
       position: absolute;
+      bottom: -3px;
       height: 3px;
       border-radius: 4px;
       border-left: 30px solid rgb(134, 188, 238);
@@ -20,6 +24,8 @@ export const LinkingWrapper = styled.div`
   }
 
   li {
+    margin-top: 10px;
+    margin-bottom: -7px;
     display: flex;
     position: relative;
     font-size: 12px;
@@ -30,6 +36,7 @@ export const LinkingWrapper = styled.div`
       text-decoration: none;
       color: black;
       font-family: Helvetica;
+      font-size: 15px;
     }
   }
 
@@ -39,9 +46,10 @@ export const LinkingWrapper = styled.div`
     justify-content: space-between;
     background-color: aliceblue;
     border-bottom: solid;
+    border-width: 1.5px;
   }
 `
-export const Image = styled.image`
+export const Image = styled.div`
   img {
     width: 40px;
     height: 40px;

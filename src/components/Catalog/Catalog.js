@@ -3,7 +3,7 @@ import Filter from "./FilterForm/FilterForm";
 import "./HeroCatalog/HeroContainer.css";
 
 
-const Catalog = (props) => {
+const Catalog = () => {
     return (
         <div>
             <Filter/>

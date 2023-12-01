@@ -1,17 +1,27 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import "./FilterForm.css";
-import {ship} from "../../Util/UtilShip";
 import HeroCatalog from "../../Catalog/HeroCatalog/HeroCatalog"
+import axios from "axios";
+import Loading from "../../Loading/Loading";
+import shipApi from "../../../utils/Api/Api";
 
 const Filter = () => {
 
-    let [shipRender, setShipRender] = useState(ship);
+    const [ship, setShip] = useState(null);
+    const [shipRender, setShipRender] = useState(ship);
 
+    useEffect(() => {
+        shipApi.getAll('http://localhost:5000/get_ships')
+            .then((result) => {
+                setShip(result.data);
+                setShipRender(result.data);
+            })
+    }, []);
     return (
         <div className="FilterContainer">
             <div className="inputmenu">
-            <div className="filterBlock">
-                <div className="dropDownMenu">
+                <div className="filterBlock">
+                    <div className="dropDownMenu">
             <span className="dropdown">
             <button className="filterBut">Filter by</button>
                 <label>
@@ -22,39 +32,43 @@ const Filter = () => {
                         </ul>
                 </label>
             </span>
+                    </div>
                 </div>
-            </div>
-            <div className="searchBlock">
+                <div className="searchBlock">
                     <input id="search__input" className="header__search__input" type="text"
                            placeholder="Type something..."/>
-                <button type="button" className="searchBut" onClick={()=>SearchImpl()}>Search</button>
-                <button type="button" className="searchBut" onClick={()=>handleReset()}>Clear</button>
+                    <button type="button" className="searchBut" onClick={() => SearchImpl()}>Search</button>
+                    <button type="button" className="searchBut" onClick={() => handleReset()}>Clear</button>
+                </div>
             </div>
-            </div>
-            <div>
-                <HeroCatalog ship={shipRender}/>
-            </div>
-        </div>
-    )
 
-    function filterByPassengers(){
-        let sortedShip = Array.from(ship);
-        sortedShip.sort((conf1, conf2) => conf2.number_of_passengers - conf1.number_of_passengers);
-        setShipRender(sortedShip);
+            <div>
+                {ship ? <HeroCatalog ship={shipRender}/> : <Loading/>}
+            </div>
+
+        </div>
+    );
+
+    function filterByPassengers() {
+        axios.get('http://localhost:5000/get_ships?sort_by=number_of_passengers')
+            .then((result) => {
+                setShipRender(result.data);
+            });
     }
 
-    function filterByTonnagePrice(){
-        let sortedShip = Array.from(ship);
-        sortedShip.sort((conf1, conf2) => conf1.tonnage_price - conf2.tonnage_price);
-        setShipRender(sortedShip);
+    function filterByTonnagePrice() {
+        axios.get('http://localhost:5000/get_ships?sort_by=tonnage_price')
+            .then((result) => {
+                setShipRender(result.data);
+            });
     }
 
     function SearchImpl() {
-        const title = document.getElementById('search__input');
-        const lowerCaseTitle = title.value.toLowerCase();
-
-        let temp = ship.filter(conf => conf.name.toLowerCase().includes(lowerCaseTitle));
-        setShipRender(temp);
+        const title = document.getElementById('search__input').value;
+        axios.get(`http://localhost:5000/search_ships?search_term=${title}`)
+            .then((result) => {
+                setShipRender(result.data);
+            });
     }
 
 
